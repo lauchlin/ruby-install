@@ -14,8 +14,8 @@ fi
 #
 # Auto-detect the downloader.
 #
-if   command -v wget >/dev/null; then downloader="wget"
-elif command -v curl >/dev/null; then downloader="curl"
+if command -v curl >/dev/null; then downloader="curl"
+elif command -v wget >/dev/null; then downloader="wget"
 fi
 
 #
