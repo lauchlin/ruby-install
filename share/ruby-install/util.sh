@@ -14,8 +14,8 @@ fi
 #
 # Auto-detect the downloader.
 #
-if command -v curl >/dev/null; then downloader="curl"
-elif command -v wget >/dev/null; then downloader="wget"
+if command -v wget >/dev/null; then downloader="wget"
+elif command -v curl >/dev/null; then downloader="curl"
 fi
 
 #
@@ -123,7 +123,7 @@ function download()
 	mkdir -p "${dest%/*}" || return $?
 
 	case "$downloader" in
-		wget) wget -c -O "$dest.part" "$url" || return $?         ;;
+		wget) wget -q -c -O "$dest.part" "$url" || return $?         ;;
 		curl) curl -f -L -C - -o "$dest.part" "$url" || return $? ;;
 		"")
 			error "Could not find wget or curl"
